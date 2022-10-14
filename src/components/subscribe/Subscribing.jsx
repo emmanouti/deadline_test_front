@@ -1,12 +1,12 @@
 import React from 'react';
 import SubscribingFormView from "./SubscribingForm.View";
 
-const Subscribe = () => {
+const Subscribing = () => {
     return (
-       <>
+       <div>
            <SubscribingFormView />
-       </>
+       </div>
     )
 }
 
-export default Subscribe;
+export default Subscribing;
