@@ -5,12 +5,13 @@ import axios from "axios";
 const UserProfile = () => {
     const [user, setUser] = useState({})
     function getProfile() {
-        axios.get("http://localhost:8000/user/:userID")
+        axios.get(`http://localhost:8000/user/${user._id}`)
             .then((response) => response.data)
             .then((data) => {
                 setUser(data);
             });
     }
+    getProfile()
     return (
         <UserProfileView user={user} />
     )
