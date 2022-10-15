@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import UserProfile from "./components/userProfile/UserProfile";
 import HomeView from "./components/Home.View";
 import useToken from "./helpers/useToken";
+import {Button, Grid} from "@mui/material";
 
 function App() {
     const {token, setToken} = useToken();
@@ -12,7 +13,14 @@ function App() {
     }
     return (
             <div>
-                <h1>Application</h1>
+                <Grid container>
+                    <Grid item sx={{display: 'flex'}}>
+                        <h1>Application</h1>
+                    </Grid>
+                    <Grid item>
+                        {token ? <Button>Se déconnecter</Button> : null}
+                    </Grid>
+                </Grid>
                 <UserProfile user={user} />
             </div>
     );
