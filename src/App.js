@@ -1,23 +1,32 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, {useState} from 'react';
 import UserProfile from "./components/userProfile/UserProfile";
 import HomeView from "./components/Home.View";
 import useToken from "./helpers/useToken";
+import {Button, Grid} from "@mui/material";
 
 function App() {
     const {token, setToken} = useToken();
+    const [user, setUser] = useState();
+    console.log(user)
     if (!token) {
-        return <HomeView setToken={setToken}/>
+        return <HomeView setToken={setToken} setUser={setUser}/>
+    }
+    function handleLogOut() {
+        setUser()
+        setToken()
     }
     return (
-        <div>
-            <Router>
-                <Routes>
-                    <Route path="/home" component={ HomeView } />
-                    <Route path="/profilePage" component={ UserProfile } />
-                </Routes>
-            </Router>
-        </div>
+            <div>
+                <Grid container>
+                    <Grid item sx={{display: 'flex'}}>
+                        <h1>Application</h1>
+                    </Grid>
+                    <Grid item>
+                        {token ? <Button onClick={handleLogOut}>Se déconnecter</Button> : null}
+                    </Grid>
+                </Grid>
+                <UserProfile user={user} />
+            </div>
     );
 }
 
