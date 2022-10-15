@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 
-const UserProfileView = (user) => {
+const UserProfileView = ({user}) => {
     return (
         <Box>
-            <p>Hello {user.name}</p>
+            <h2>Bienvenue {user.name}</h2>
         </Box>
     )
 }

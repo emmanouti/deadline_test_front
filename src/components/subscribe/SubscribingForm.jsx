@@ -12,7 +12,7 @@ const defaultValues= {
     password: ""
 }
 
-const SubscribingForm = () => {
+const SubscribingForm = ({setToken, setUser}) => {
     const [formValues, setFormValues] = useState(defaultValues);
     function createProfile() {
         axios.post('http://localhost:8000/newUser',
@@ -27,7 +27,8 @@ const SubscribingForm = () => {
             }
         )
             .then(function (response) {
-                console.log(response);
+                setToken(response.data.token)
+                setUser(response.data.user)
             })
             .catch(function (error) {
                 console.log(error);

@@ -6,7 +6,7 @@ const defaultLoginValues = {
     email: "",
     password: ""
 }
-const Login = ({setToken}) => {
+const Login = ({setToken, setUser}) => {
     const [loginValues, setLoginValues] = useState(defaultLoginValues)
     function loginUser() {
         axios.post("http://localhost:8000/login",
@@ -15,7 +15,8 @@ const Login = ({setToken}) => {
                 password: loginValues.password
             })
             .then(function (response) {
-                setToken(response.data);
+                setToken(response.data.token);
+                setUser(response.data.user)
             })
             .catch(function (error) {
                 console.log(error);
