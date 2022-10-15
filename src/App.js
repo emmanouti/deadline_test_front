@@ -11,6 +11,10 @@ function App() {
     if (!token) {
         return <HomeView setToken={setToken} setUser={setUser}/>
     }
+    function handleLogOut() {
+        setUser()
+        setToken()
+    }
     return (
             <div>
                 <Grid container>
@@ -18,7 +22,7 @@ function App() {
                         <h1>Application</h1>
                     </Grid>
                     <Grid item>
-                        {token ? <Button>Se déconnecter</Button> : null}
+                        {token ? <Button onClick={handleLogOut}>Se déconnecter</Button> : null}
                     </Grid>
                 </Grid>
                 <UserProfile user={user} />
