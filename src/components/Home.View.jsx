@@ -1,5 +1,5 @@
-import Subscribing from './subscribe/Subscribing';
-import {Box} from "@mui/material";
+import SubscribingForm from './subscribe/SubscribingForm';
+import { Box } from "@mui/material";
 import Login from "./login/Login";
 
 const HomeView = () => {
@@ -9,7 +9,7 @@ const HomeView = () => {
             <Box sx={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
                 <Box>
                     <h2>Nouveau sur le site ?</h2>
-                    <Subscribing />
+                    <SubscribingForm />
                 </Box>
                 <Box>
                     <h2>Vous possédez déjà un compte ?</h2>

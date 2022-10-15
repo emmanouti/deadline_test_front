@@ -1,28 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {TextField, Grid, Button, Box} from "@mui/material";
 
-const defaultValues= {
-        pseudo: "",
-        surname: "",
-        name: "",
-        phone: "",
-        address: "",
-        email: "",
-    }
 
-const SubscribingFormView = () => {
-    const [formValues, setFormValues] = useState(defaultValues);
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormValues({
-            ...formValues,
-            [name]: value,
-        });
-    };
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(formValues);
-    };
+const SubscribingFormView = ({formValues, handleSubmit, handleInputChange}) => {
     return (
         <Box component={"div"} sx={{backgroundColor:"secondary.light", padding:2, borderRadius: "20px"}} >
             <form onSubmit={handleSubmit}>
@@ -90,6 +70,17 @@ const SubscribingFormView = () => {
                             name="email"
                             type="text"
                             value={formValues.email}
+                            onChange={handleInputChange}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <TextField
+                            required
+                            id="password-input"
+                            label="Mot de passe"
+                            name="password"
+                            type="text"
+                            value={formValues.password}
                             onChange={handleInputChange}
                         />
                     </Grid>
