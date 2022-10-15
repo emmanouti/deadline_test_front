@@ -25,7 +25,7 @@ function App() {
                         {token ? <Button onClick={handleLogOut}>Se déconnecter</Button> : null}
                     </Grid>
                 </Grid>
-                <UserProfile user={user} />
+                <UserProfile user={user} handleLogOut={handleLogOut} />
             </div>
     );
 }
