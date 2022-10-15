@@ -1,23 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import UserProfile from "./components/userProfile/UserProfile";
 import HomeView from "./components/Home.View";
+import useToken from "./helpers/useToken";
 
 function App() {
-    const [token, setToken] = useState();
+    const {token, setToken} = useToken();
     if (!token) {
         return <HomeView setToken={setToken}/>
-
     }
     return (
-        <Router>
-            <div>
+        <div>
+            <Router>
                 <Routes>
-                    <Route exact path="/" component={ HomeView } />
-                    <Route path="/profile" component={ UserProfile } />
+                    <Route path="/home" component={ HomeView } />
+                    <Route path="/profilePage" component={ UserProfile } />
                 </Routes>
-            </div>
-        </Router>
+            </Router>
+        </div>
     );
 }
 
