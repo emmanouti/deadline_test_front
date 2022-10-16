@@ -15,6 +15,7 @@ function App() {
         setUser()
         setToken()
     }
+    console.log(user)
     return (
             <div>
                 <Grid container>
@@ -25,7 +26,7 @@ function App() {
                         {token ? <Button onClick={handleLogOut}>Se déconnecter</Button> : null}
                     </Grid>
                 </Grid>
-                <UserProfile user={user} handleLogOut={handleLogOut} />
+                <UserProfile user={user} setUser={setUser} handleLogOut={handleLogOut} token={token} />
             </div>
     );
 }

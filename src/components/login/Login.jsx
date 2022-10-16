@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LoginView from "./Login.View";
-import axios from "axios";
+import apiClient from "../../configs/configAxios";
 
 const defaultLoginValues = {
     email: "",
@@ -9,7 +9,7 @@ const defaultLoginValues = {
 const Login = ({setToken, setUser}) => {
     const [loginValues, setLoginValues] = useState(defaultLoginValues)
     function loginUser() {
-        axios.post("http://localhost:8000/login",
+        apiClient.post("/login",
             {
                 email: loginValues.email,
                 password: loginValues.password

@@ -1,11 +1,13 @@
-import {Box, Button, Grid, Typography} from "@mui/material";
+import {Box, Grid, Typography} from "@mui/material";
+import ModifyModal from "./ModifyModal";
+import DeleteModal from "./DeleteModal";
 
-const UserProfileView = ({user, onClickDelete}) => {
+const UserProfileView = ({user, onClickDelete, handleSubmit, handleInputChange, formModifyValues}) => {
     return (
         <Box>
             <h2>Bienvenue {user.name} !</h2>
                     <Typography sx={{ mt: 5, mb: 2 }} variant="h5" component="div">
-                        Profil :
+                        Votre Profil :
                     </Typography>
                 <Grid item xs={10} md={4}>
                     <Typography>Pseudo: {user.pseudo}</Typography>
@@ -15,8 +17,8 @@ const UserProfileView = ({user, onClickDelete}) => {
                     <Typography>Adresse: {user.address}</Typography>
                     <Typography>Email: {user.email}</Typography>
                 </Grid>
-            <Button type="">Modifier</Button>
-            <Button onClick={onClickDelete}>Supprimer</Button>
+            <ModifyModal handleSubmit={handleSubmit} handleInputChange={handleInputChange} formModifyValues={formModifyValues} />
+            <DeleteModal onClick={onClickDelete} />
         </Box>
     )
 }
