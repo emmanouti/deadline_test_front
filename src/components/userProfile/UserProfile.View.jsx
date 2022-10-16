@@ -7,15 +7,15 @@ const styles = {
     buttonContainer: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         padding: 5,
-        marginTop: 5
+        marginBottom: 5
     }
 }
 
 const UserProfileView = ({user, onClickDelete, handleSubmit, handleInputChange, formModifyValues}) => {
     return (
-            <Paper sx={{width: "50%", display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <Paper sx={{width: "60%", display: "flex", flexDirection: "column"}}>
                 <Box sx={{padding: 2, width: "100%", display: "flex", flexDirection: 'column', alignItems: "center"}}>
                     <Typography variant="h5">Bienvenue {user.name} !</Typography>
                     <Typography sx={{ mt: 5, mb: 2 }} variant="h5" component="div">
@@ -32,12 +32,11 @@ const UserProfileView = ({user, onClickDelete, handleSubmit, handleInputChange, 
                     <Typography>Adresse: {user.address}</Typography>
                     <br/>
                     <Typography>Email: {user.email}</Typography>
+                </Box>
                     <div style={styles.buttonContainer}>
                         <ModifyModal handleSubmit={handleSubmit} handleInputChange={handleInputChange} formModifyValues={formModifyValues} />
                         <DeleteModal onClick={onClickDelete} />
                     </div>
-
-                </Box>
             </Paper>
     )
 }
