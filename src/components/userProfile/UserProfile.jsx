@@ -3,7 +3,27 @@ import UserProfileView from "./UserProfile.View";
 import apiClient from "../../configs/configAxios";
 
 
-const UserProfile = ({user, handleLogOut, setUser, token}) => {
+const UserProfile = ({user, handleLogOut, setUser, token, userId}) => {
+    function getProfile() {
+        const user = userId.toString()
+        apiClient.get(`/user/${user}`,
+            {
+                headers: {
+                    'x-access-token': token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function (response) {
+                setUser(response.data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+    if (!user) {
+        getProfile()
+    }
     const [formModifyValues, setFormModifyValues] = useState({address: user.address, email: user.email});
     function modifyProfile() {
         apiClient.put(`/user/${user._id}`,

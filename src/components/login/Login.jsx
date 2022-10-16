@@ -6,7 +6,7 @@ const defaultLoginValues = {
     email: "",
     password: ""
 }
-const Login = ({setToken, setUser}) => {
+const Login = ({setToken, setUser, setUserId}) => {
     const [loginValues, setLoginValues] = useState(defaultLoginValues)
     function loginUser() {
         apiClient.post("/login",
@@ -17,6 +17,7 @@ const Login = ({setToken, setUser}) => {
             .then(function (response) {
                 setToken(response.data.token);
                 setUser(response.data.user)
+                setUserId(response.data.user._id)
             })
             .catch(function (error) {
                 console.log(error);
