@@ -36,7 +36,7 @@ const Login = ({setToken, setUser, setUserId}) => {
     };
     return (
         <>
-            <LoginView loginValues={loginValues} handleInputChange={handleInputChange} handleSubmit={handleSubmit}/>
+            <LoginView loginValues={loginValues} handleInputChange={handleInputChange} handleSubmit={handleSubmit} />
         </>
     )
 }

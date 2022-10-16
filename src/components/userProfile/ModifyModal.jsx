@@ -3,19 +3,28 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import {Grid, TextField} from "@mui/material";
+import {Container, TextField} from "@mui/material";
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
+const styles = {
+    buttonContainer: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: 5,
+        marginTop: 5
+    },
+    modal: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    }
+}
 
 export default function ModifyModal({handleSubmit, handleInputChange, formModifyValues}) {
     const [open, setOpen] = useState(false);
@@ -23,20 +32,20 @@ export default function ModifyModal({handleSubmit, handleInputChange, formModify
     const handleClose = () => setOpen(false);
     return (
             <div>
-                <Button onClick={handleOpen}>Modifier mes informations</Button>
+                <Button variant="contained" onClick={handleOpen}>Modifier mes informations</Button>
                 <Modal
                     open={open}
                     onClose={handleClose}
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
-                    <Box sx={style}>
+                    <Box sx={styles.modal}>
                         <Typography id="modal-modal-title" variant="h6" component="h2">
                             Modifier mes informations
                         </Typography>
+                        <br/>
                         <form onSubmit={handleSubmit}>
-                            <Grid container>
-                                <Grid item>
+                            <Container>
                                     <TextField
                                         required
                                         id="address-modify-input"
@@ -46,8 +55,9 @@ export default function ModifyModal({handleSubmit, handleInputChange, formModify
                                         value={formModifyValues.address}
                                         onChange={handleInputChange}
                                     />
-                                </Grid>
-                                <Grid item>
+                            </Container>
+                            <br/>
+                            <Container>
                                     <TextField
                                         required
                                         id="email-modify-input"
@@ -57,11 +67,12 @@ export default function ModifyModal({handleSubmit, handleInputChange, formModify
                                         value={formModifyValues.email}
                                         onChange={handleInputChange}
                                     />
-                                </Grid>
-                            </Grid>
-                            <Button type="submit">Modifier</Button>
+                            </Container>
+                            <div style={styles.buttonContainer}>
+                                <Button variant="contained" type="submit">Modifier</Button>
+                                <Button variant="contained" onClick={handleClose}>Annuler</Button>
+                            </div>
                         </form>
-                        <Button onClick={handleClose}>Annuler</Button>
                     </Box>
                 </Modal>
             </div>
