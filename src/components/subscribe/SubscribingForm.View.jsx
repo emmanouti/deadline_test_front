@@ -1,12 +1,14 @@
 import React from 'react';
-import {TextField, Grid, Button, Box} from "@mui/material";
+import {TextField, Grid, Button, Container, Typography} from "@mui/material";
 
 
 const SubscribingFormView = ({formValues, handleSubmit, handleInputChange}) => {
     return (
-        <Box component={"div"} sx={{backgroundColor:"secondary.light", padding:2, borderRadius: "20px"}} >
+        <Container sx={{padding:2}} >
+            <Typography variant="h4">Nouveau sur le site ?</Typography>
+            <br/>
             <form onSubmit={handleSubmit}>
-                <Grid container spacing={4} flexGrow={1}>
+                <Grid container spacing={2}>
                     <Grid item>
                         <TextField
                             required
@@ -15,6 +17,17 @@ const SubscribingFormView = ({formValues, handleSubmit, handleInputChange}) => {
                             name="pseudo"
                             type="text"
                             value={formValues.pseudo}
+                            onChange={handleInputChange}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <TextField
+                            required
+                            id="password-input"
+                            label="Mot de passe"
+                            name="password"
+                            type="text"
+                            value={formValues.password}
                             onChange={handleInputChange}
                         />
                     </Grid>
@@ -51,7 +64,7 @@ const SubscribingFormView = ({formValues, handleSubmit, handleInputChange}) => {
                             onChange={handleInputChange}
                         />
                     </Grid>
-                    <Grid item sm={12}>
+                    <Grid item>
                         <TextField
                             required
                             id="address-input"
@@ -62,7 +75,7 @@ const SubscribingFormView = ({formValues, handleSubmit, handleInputChange}) => {
                             onChange={handleInputChange}
                         />
                     </Grid>
-                    <Grid item sm={12} flexgrow={2}>
+                    <Grid item>
                         <TextField
                             required
                             id="email-input"
@@ -73,23 +86,12 @@ const SubscribingFormView = ({formValues, handleSubmit, handleInputChange}) => {
                             onChange={handleInputChange}
                         />
                     </Grid>
-                    <Grid item>
-                        <TextField
-                            required
-                            id="password-input"
-                            label="Mot de passe"
-                            name="password"
-                            type="text"
-                            value={formValues.password}
-                            onChange={handleInputChange}
-                        />
-                    </Grid>
-                    <Grid item>
-                        <Button type="submit">Valider</Button>
-                    </Grid>
+                    <Container>
+                        <Button sx={{padding: 2, marginTop: 2, width: "100%", alignSelf: "center"}} type="submit">Valider</Button>
+                    </Container>
                 </Grid>
             </form>
-        </Box>
+        </Container>
     )
 }
 
