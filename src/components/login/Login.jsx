@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import LoginView from "./Login.View";
-import axios from "axios";
+import apiClient from "../../configs/configAxios";
 
 const defaultLoginValues = {
     email: "",
     password: ""
 }
-const Login = ({setToken, setUser}) => {
+const Login = ({setToken, setUser, setUserId}) => {
     const [loginValues, setLoginValues] = useState(defaultLoginValues)
     function loginUser() {
-        axios.post("http://localhost:8000/login",
+        apiClient.post("/login",
             {
                 email: loginValues.email,
                 password: loginValues.password
@@ -17,6 +17,7 @@ const Login = ({setToken, setUser}) => {
             .then(function (response) {
                 setToken(response.data.token);
                 setUser(response.data.user)
+                setUserId(response.data.user._id)
             })
             .catch(function (error) {
                 console.log(error);

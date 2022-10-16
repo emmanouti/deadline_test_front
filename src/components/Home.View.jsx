@@ -2,7 +2,7 @@ import SubscribingForm from './subscribe/SubscribingForm';
 import { Box } from "@mui/material";
 import Login from "./login/Login";
 
-const HomeView = ({setToken, setUser}) => {
+const HomeView = ({setToken, setUser, setUserId}) => {
     return (
         <div>
             <h1>Bienvenue !</h1>
@@ -13,7 +13,7 @@ const HomeView = ({setToken, setUser}) => {
                 </Box>
                 <Box>
                     <h2>Vous possédez déjà un compte ?</h2>
-                    <Login setToken={setToken} setUser={setUser} />
+                    <Login setToken={setToken} setUser={setUser} setUserId={setUserId} />
                 </Box>
             </Box>
         </div>
