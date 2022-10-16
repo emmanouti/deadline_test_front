@@ -3,7 +3,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Setup
-Run:
+
+Fork this project then run:
 ### `npm install`
 To install all the dependencies.
 
